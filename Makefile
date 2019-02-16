@@ -4,7 +4,10 @@ TARGET_OS := linux
 
 .PHONY: flash-serial
 
-default: flash-usbasp flash-serial monitor
+default: clean flash-usbasp flash-serial monitor
+
+clean:
+	rm -rf build/
 
 flash-usbasp:
 	avrdude -c usbasp -p m2560 -u -U flash:w:build/Mega/harvest-reservoir.hex
