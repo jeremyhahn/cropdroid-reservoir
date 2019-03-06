@@ -14,6 +14,7 @@
 #define HYDRO_DEBUG 1
 #define ONE_WIRE_BUS 5
 #define DHT_ENV_PIN  7
+#define RO_SOLENOID_PIN 8
 
 DHT envDHT(DHT_ENV_PIN, DHT22);
 OneWire oneWire(ONE_WIRE_BUS);
@@ -37,6 +38,8 @@ void readProbe(int channel, float *probe);
 void readTempHumidity();
 void readResTemp();
 void debug(String msg);
+void startRO();
+void stopRO();
 
 int main(void) {
   init();
@@ -227,6 +230,13 @@ void readProbe(int channel, float *probe) {
   else {
     *probe = atof(sensordata);
   }
+}
+
+void startRO() {
+	digitalWrite(RO_SOLENOID_PIN, HIGH);
+}
+void stopRO() {
+	digitalWrite(RO_SOLENOID_PIN, LOW);
 }
 
 void debug(String msg) {

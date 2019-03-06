@@ -2,7 +2,7 @@ ORG := jeremyhahn
 PACKAGE := harvest.room
 TARGET_OS := linux
 
-.PHONY: flash-serial
+.PHONY: clean flash-usbasp flash-serial monitor
 
 default: clean flash-usbasp flash-serial monitor
 
