@@ -20,7 +20,7 @@ DHT envDHT(DHT_ENV_PIN, DHT22);
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
-byte mac[] = { 0x90, 0xA2, 0xDA, 0x0E, 0xFE, 0x42 };
+byte mac[] = { 0x04, 0x02, 0x00, 0x00, 0x00, 0x02 };
 IPAddress ip(192,168,0,200);
 
 EthernetClient client;
