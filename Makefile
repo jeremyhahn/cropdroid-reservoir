@@ -4,7 +4,7 @@ TARGET_OS := linux
 
 .PHONY: clean flash-usbasp flash-serial monitor
 
-default: clean flash-usbasp flash-serial monitor
+default: flash-serial monitor
 
 clean:
 	rm -rf build/
