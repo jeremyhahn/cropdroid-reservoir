@@ -21,7 +21,7 @@ extern int  *__brkval;
 const char json_bracket_open[] = "{";
 const char json_bracket_close[] = "}";
 
-const char string_initializing[] PROGMEM = "Initializing CropDroid reservoir controller...";
+const char string_initializing[] PROGMEM = "Initializing reservoir controller...";
 const char string_dhcp_failed[] PROGMEM = "DHCP Failed";
 const char string_http_200[] PROGMEM = "HTTP/1.1 200 OK";
 const char string_http_404[] PROGMEM = "HTTP/1.1 404 Not Found";
@@ -116,9 +116,6 @@ char float_buffer[10];
 DHT envDHT(DHT_ENV_PIN, DHT22);
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
-
-//byte mac[] = { 0x04, 0x02, 0x00, 0x00, 0x00, 0x02 };
-//IPAddress ip(192,168,0,102);
 
 float envTemp, envHumidity, envHeatIndex,
       PH, EC, TDS, SAL, SG, DO_mgL, DO_PER, ORP = 0.0,
