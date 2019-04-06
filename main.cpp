@@ -110,7 +110,7 @@ int idx_initializing = 0,
 	idx_json_key_bracket_close = 26,
 	idx_json_reboot_true = 27,
 	idx_json_reset_true = 28;
-char string_buffer[50];
+char string_buffer[60];
 char float_buffer[10];
 
 DHT envDHT(DHT_ENV_PIN, DHT22);
@@ -135,7 +135,7 @@ void resetDefaults();
 int availableMemory();
 void(* resetFunc) (void) = 0;
 
-byte defaultMac[] = { 0x04, 0x02, 0x00, 0x04, 0x02, 0x02 };
+byte defaultMac[] = { 0x04, 0x02, 0x00, 0x00, 0x00, 0x02 };
 
 byte mac[] = {
 	EEPROM.read(0),
