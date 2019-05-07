@@ -13,7 +13,8 @@
 
 #define ONE_WIRE_BUS 2
 #define DHT_ENV_PIN  3
-#define RO_SOLENOID_PIN 4
+#define UPPER_FLOAT A0
+#define LOWER_FLOAT A1
 
 extern int  __bss_end;
 extern int  *__brkval;
@@ -44,7 +45,10 @@ const char string_json_key_do_mgl[] PROGMEM = ",\"DO_mgL\":";
 const char string_json_key_do_per[] PROGMEM = ",\"DO_PER\":";
 const char string_json_key_orp[] PROGMEM = ",\"ORP\":";
 const char string_json_key_resTemp[] PROGMEM = ",\"resTemp\":";
+const char string_json_key_upperFloat[] PROGMEM = ",\"upperFloat\":";
+const char string_json_key_lowerFloat[] PROGMEM = ",\"lowerFloat\":";
 const char string_json_key_channels[] PROGMEM = ",\"channels\":{";
+const char string_json_key_channel[] PROGMEM = "\"channel\":";
 const char string_json_key_pin[] PROGMEM = "\"pin\":";
 const char string_json_key_position[] PROGMEM =  ",\"position\":";
 const char string_json_key_value[] PROGMEM =  ",\"value\":";
@@ -78,7 +82,10 @@ const char * const string_table[] PROGMEM = {
   string_json_key_do_per,
   string_json_key_orp,
   string_json_key_resTemp,
+  string_json_key_upperFloat,
+  string_json_key_lowerFloat,
   string_json_key_channels,
+  string_json_key_channel,
   string_json_key_pin,
   string_json_key_position,
   string_json_key_value,
@@ -112,16 +119,19 @@ int idx_initializing = 0,
 	idx_json_key_do_per = 20,
 	idx_json_key_orp = 21,
 	idx_json_key_resTemp = 22,
-	idx_json_key_channels = 23,
-	idx_json_key_pin = 24,
-	idx_json_key_position = 25,
-	idx_json_key_value = 26,
-	idx_json_key_address = 27,
-	idx_json_key_bracket_open = 28,
-	idx_json_key_bracket_close = 29,
-	idx_json_error_invalid_channel = 30,
-	idx_json_reboot_true = 31,
-	idx_json_reset_true = 32;
+	idx_json_key_upperFloat = 23,
+	idx_json_key_lowerFloat = 24,
+	idx_json_key_channels = 25,
+	idx_json_key_channel = 26,
+	idx_json_key_pin = 27,
+	idx_json_key_position = 28,
+	idx_json_key_value = 29,
+	idx_json_key_address = 30,
+	idx_json_key_bracket_open = 31,
+	idx_json_key_bracket_close = 32,
+	idx_json_error_invalid_channel = 33,
+	idx_json_reboot_true = 34,
+	idx_json_reset_true = 35;
 char string_buffer[60];
 char float_buffer[10];
 
@@ -131,7 +141,6 @@ const uint8_t channels[channel_size] = {
 	22, 23, 24, 25, 26, 27, 28, 29,
 	30, 31, 32, 33, 34, 35, 36, 37
 };
-
 unsigned long channel_table[channel_size][3] = {
 	// channel, start, interval
    {NULL_CHANNEL, 0, 0},
@@ -166,8 +175,8 @@ void readProbe(int channel, float *probe);
 void readTempHumidity();
 void readResTemp();
 void debug(String msg);
-void startRO();
-void stopRO();
+void switchOn(int pin);
+void switchOff(int pin);
 void handleWebRequest();
 void send404();
 void resetDefaults();
@@ -215,6 +224,10 @@ void setup(void) {
     pinMode(channels[i], OUTPUT);
     digitalWrite(channels[i], LOW);
   }
+  //pinMode(UPPER_FLOAT, INPUT_PULLUP);
+  //pinMode(LOWER_FLOAT, INPUT_PULLUP);
+  pinMode(UPPER_FLOAT, INPUT);
+  pinMode(LOWER_FLOAT, INPUT);
 
   #if DEBUG || EEPROM_DEBUG
     Serial.begin(115200);
@@ -402,14 +415,6 @@ void readProbe(int channel, float *probe) {
   }
 }
 
-void startRO() {
-	digitalWrite(RO_SOLENOID_PIN, HIGH);
-}
-
-void stopRO() {
-	digitalWrite(RO_SOLENOID_PIN, LOW);
-}
-
 void switchOn(int pin) {
 #if DEBUG
   char sPin[3];
@@ -584,6 +589,16 @@ void handleWebRequest() {
 					  dtostrf(resTemp, 4, 2, float_buffer);
 					  strcat(json, float_buffer);
 
+					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_upperFloat])));
+					  strcat(json, string_buffer);
+					  dtostrf(analogRead(UPPER_FLOAT), 4, 2, float_buffer);
+					  strcat(json, float_buffer);
+
+					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_lowerFloat])));
+					  strcat(json, string_buffer);
+					  dtostrf(analogRead(LOWER_FLOAT), 4, 2, float_buffer);
+					  strcat(json, float_buffer);
+
 					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_channels])));
 					  strcat(json, string_buffer);
 						for(int i=0; i<channel_size; i++) {
@@ -687,15 +702,23 @@ void handleWebRequest() {
 
 					if(valid) {
 
+						position == 1 ? switchOn(channels[channel]) : switchOff(channels[channel]);
+
 						strcpy(json, json_bracket_open);
 
-						  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_pin])));
+						  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_channel])));
 						  strcat(json, string_buffer);
 						  strcat(json, param1);
 
+						  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_pin])));
+						  strcat(json, string_buffer);
+						  itoa(channels[channel], string_buffer, 10);
+						  strcat(json, string_buffer);
+
 						  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_position])));
 						  strcat(json, string_buffer);
-						  strcat(json, param2);
+						  itoa(digitalRead(channels[channel]), string_buffer, 10);
+						  strcat(json, string_buffer);
 
 						strcat(json, json_bracket_close);
 
@@ -704,7 +727,6 @@ void handleWebRequest() {
 							Serial.println(json);
 						#endif
 
-						position == 1 ? switchOn(channels[channel]) : switchOff(channels[channel]);
 					}
 					else {
 						strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_error_invalid_channel])));
