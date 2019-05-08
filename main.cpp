@@ -49,7 +49,7 @@ const char string_json_key_upperFloat[] PROGMEM = ",\"upperFloat\":";
 const char string_json_key_lowerFloat[] PROGMEM = ",\"lowerFloat\":";
 const char string_json_key_channels[] PROGMEM = ",\"channels\":{";
 const char string_json_key_channel[] PROGMEM = "\"channel\":";
-const char string_json_key_pin[] PROGMEM = "\"pin\":";
+const char string_json_key_pin[] PROGMEM = ",\"pin\":";
 const char string_json_key_position[] PROGMEM =  ",\"position\":";
 const char string_json_key_value[] PROGMEM =  ",\"value\":";
 const char string_json_key_address[] PROGMEM =  "\"address\":";
@@ -726,7 +726,6 @@ void handleWebRequest() {
 							Serial.print("/switch: ");
 							Serial.println(json);
 						#endif
-
 					}
 					else {
 						strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_error_invalid_channel])));
