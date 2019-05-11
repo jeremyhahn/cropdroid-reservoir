@@ -304,12 +304,19 @@ void readResTemp() {
   }
 }
 
+float zeroIfNan(float number) {
+  if(isnan(number)) {
+	number = 0.0;
+  }
+  return number;
+}
+
 void readTempHumidity() {
 
   debug("Reading environment temp, humidity, & heat index");
-  envTemp = envDHT.readTemperature(true);
-  envHumidity = envDHT.readHumidity();
-  envHeatIndex = envDHT.computeHeatIndex(envTemp, envHumidity);
+  envTemp = zeroIfNan(envDHT.readTemperature(true));
+  envHumidity = zeroIfNan(envDHT.readHumidity());
+  envHeatIndex = zeroIfNan(envDHT.computeHeatIndex(envTemp, envHumidity));
 
   if(DEBUG) {
     Serial.print("Environment Temp: ");
