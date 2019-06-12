@@ -214,6 +214,8 @@ int main(void) {
 
 void setup(void) {
 
+  //EEPROM.write(0, 255);
+
   Wire.begin();
   envDHT.begin();
   sensors.begin();
@@ -244,6 +246,7 @@ void setup(void) {
   #endif
 
   if(macByte1 == 255) {
+	resetDefaults();
     if(Ethernet.begin(defaultMac) == 0) {
 	  #if DEBUG
 	    strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_dhcp_failed])));
