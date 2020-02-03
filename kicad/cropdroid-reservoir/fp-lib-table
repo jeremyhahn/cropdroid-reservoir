@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name cropdroid_logo)(type KiCad)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/kicad/cropdroid-reservoir)(options "")(descr ""))
+)
