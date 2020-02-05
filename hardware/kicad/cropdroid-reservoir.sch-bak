@@ -137,26 +137,6 @@ F 12 "Active" H 7800 2250 60  0001 L CNN "Status"
 	1    7600 1050
 	0    1    1    0   
 $EndComp
-$Comp
-L dk_Barrel-Audio-Connectors:SJ1-3523N CON3
-U 1 1 5E21D609
-P 6550 1050
-F 0 "CON3" V 6555 1278 60  0000 L CNN
-F 1 "SJ1-3523N" V 6661 1278 60  0000 L CNN
-F 2 "digikey-footprints:Headphone_Jack_3.5mm_SJ1-3523N" H 6750 1250 60  0001 L CNN
-F 3 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 6750 1350 60  0001 L CNN
-F 4 "CP1-3523N-ND" H 6750 1450 60  0001 L CNN "Digi-Key_PN"
-F 5 "SJ1-3523N" H 6750 1550 60  0001 L CNN "MPN"
-F 6 "Connectors, Interconnects" H 6750 1650 60  0001 L CNN "Category"
-F 7 "Barrel - Audio Connectors" H 6750 1750 60  0001 L CNN "Family"
-F 8 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 6750 1850 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/cui-inc/SJ1-3523N/CP1-3523N-ND/738689" H 6750 1950 60  0001 L CNN "DK_Detail_Page"
-F 10 "CONN JACK STEREO 3.5MM R/A" H 6750 2050 60  0001 L CNN "Description"
-F 11 "CUI Inc." H 6750 2150 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 6750 2250 60  0001 L CNN "Status"
-	1    6550 1050
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	8550 1450 8550 2000
 Wire Wire Line
@@ -199,8 +179,6 @@ F 3 "" H 8000 4700 50  0001 C CNN
 	1    8000 4700
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6550 1500 6550 1750
 Wire Wire Line
 	6550 1750 7250 1750
 Wire Wire Line
@@ -2006,4 +1984,50 @@ Wire Wire Line
 Connection ~ 9600 2700
 Wire Wire Line
 	9600 2700 9600 3300
+$Comp
+L dk_Barrel-Audio-Connectors:SJ1-3523N CON3
+U 1 1 5E21D609
+P 6550 1050
+F 0 "CON3" V 6555 1278 60  0000 L CNN
+F 1 "SJ1-3523N" V 6661 1278 60  0000 L CNN
+F 2 "digikey-footprints:Headphone_Jack_3.5mm_SJ1-3523N" H 6750 1250 60  0001 L CNN
+F 3 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 6750 1350 60  0001 L CNN
+F 4 "CP1-3523N-ND" H 6750 1450 60  0001 L CNN "Digi-Key_PN"
+F 5 "SJ1-3523N" H 6750 1550 60  0001 L CNN "MPN"
+F 6 "Connectors, Interconnects" H 6750 1650 60  0001 L CNN "Category"
+F 7 "Barrel - Audio Connectors" H 6750 1750 60  0001 L CNN "Family"
+F 8 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 6750 1850 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/cui-inc/SJ1-3523N/CP1-3523N-ND/738689" H 6750 1950 60  0001 L CNN "DK_Detail_Page"
+F 10 "CONN JACK STEREO 3.5MM R/A" H 6750 2050 60  0001 L CNN "Description"
+F 11 "CUI Inc." H 6750 2150 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 6750 2250 60  0001 L CNN "Status"
+	1    6550 1050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6550 1450 6550 1750
+Text Notes 2300 3100 0    50   ~ 0
+Channel 1
+Text Notes 3350 3050 0    50   ~ 0
+Channel 2
+Text Notes 4400 3050 0    50   ~ 0
+Channel 3
+Text Notes 9500 700  0    50   ~ 0
+Channel 0
+Text Notes 6350 700  0    50   ~ 0
+Channel 4
+Text Notes 7400 700  0    50   ~ 0
+Channel 5
+Text Notes 8450 700  0    50   ~ 0
+Channel 6
+Text Notes 3150 6300 0    50   ~ 0
+Water Low
+Text Notes 7050 6350 0    50   ~ 0
+Water High
+Text Notes 1250 4250 0    50   ~ 0
+OneWire
+Text Notes 1850 4750 0    50   ~ 0
+DHT22
+Text Notes 8650 3450 0    50   ~ 0
+Channel 0
 $EndSCHEMATC

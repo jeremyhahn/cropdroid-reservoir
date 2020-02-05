@@ -2006,4 +2006,28 @@ F 12 "Active" H 6750 2250 60  0001 L CNN "Status"
 $EndComp
 Wire Wire Line
 	6550 1450 6550 1750
+Text Notes 2300 3100 0    50   ~ 0
+Channel 1
+Text Notes 3350 3050 0    50   ~ 0
+Channel 2
+Text Notes 4400 3050 0    50   ~ 0
+Channel 3
+Text Notes 9500 700  0    50   ~ 0
+Channel 0
+Text Notes 6350 700  0    50   ~ 0
+Channel 4
+Text Notes 7400 700  0    50   ~ 0
+Channel 5
+Text Notes 8450 700  0    50   ~ 0
+Channel 6
+Text Notes 3150 6300 0    50   ~ 0
+Analog 0
+Text Notes 7050 6350 0    50   ~ 0
+Analog 1
+Text Notes 1250 4250 0    50   ~ 0
+OneWire
+Text Notes 1850 4750 0    50   ~ 0
+DHT22
+Text Notes 8650 3450 0    50   ~ 0
+Channel 0
 $EndSCHEMATC
