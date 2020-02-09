@@ -1,0 +1,43 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#(c) SnapEDA 2016 (snapeda.com)
+#This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) with Design Exception 1.0
+#
+# 1-1393210-3
+#
+DEF 1-1393210-3 K 0 40 Y N 1 L N
+F0 "K" -301 221 50 H V L BNN
+F1 "1-1393210-3" -301 -401 50 H V L BNN
+F2 "TE_1-1393210-3" 0 0 50 H I L BNN
+F3 "https://www.te.com/usa-en/product-1-1393210-3.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493" 0 0 50 H I L BNN
+F4 "1-1393210-3" 0 0 50 H I L BNN
+DRAW
+P 2 0 0 10 300 200 300 0 N
+P 2 0 0 10 300 0 300 -200 N
+P 2 0 0 10 300 -200 300 -300 N
+P 2 0 0 10 300 -300 -300 -300 N
+P 2 0 0 10 -300 -300 -300 -200 N
+P 2 0 0 10 -300 -200 -300 100 N
+P 2 0 0 10 -300 100 -300 200 N
+P 2 0 0 10 -300 200 300 200 N
+A -165 35 65 2740 860 0 0 10 N -160 -30 -160 100
+A -169 0 31 740 2860 0 0 10 N -160 30 -160 -30
+A -183 -50 83 2860 740 0 0 10 N -160 -130 -160 30
+A -169 -100 31 740 2860 0 0 10 N -160 -70 -160 -130
+A -165 -135 65 2740 860 0 0 10 N -160 -200 -160 -70
+P 2 0 0 10 300 -200 60 -200 N
+P 2 0 0 10 60 -200 60 -50 N
+P 2 0 0 10 300 0 210 0 N
+P 2 0 0 10 210 0 60 50 N
+P 2 0 0 10 60 -50 90 -80 N
+P 2 0 0 10 60 -50 30 -80 N
+P 2 0 0 10 -300 100 -160 100 N
+P 2 0 0 10 -300 -200 -160 -200 N
+X A1 A1 -400 100 100 R 40 40 0 0 P 
+X A2 A2 -400 -200 100 R 40 40 0 0 P 
+X C C 400 0 100 L 40 40 0 0 P 
+X NO NO 400 -200 100 L 40 40 0 0 P 
+ENDDRAW
+ENDDEF
+#
+# End Library

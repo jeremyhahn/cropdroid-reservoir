@@ -6,7 +6,7 @@ encoding utf-8
 Sheet 1 1
 Title "CropDroid Reservoir"
 Date "2020-02-01"
-Rev "0.2a"
+Rev "0.3a"
 Comp "Automate The Things, LLC"
 Comment1 ""
 Comment2 "www.automatethethings.com"
