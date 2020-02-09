@@ -1,0 +1,24 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#(c) SnapEDA 2016 (snapeda.com)
+#This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) with Design Exception 1.0
+#
+# 703W-00/54
+#
+DEF 703W-00/54 U 0 40 Y Y 1 L N
+F0 "U" 0 0 50 H I L BNN
+F1 "703W-00/54" 0 0 50 H I L BNN
+F2 "703W-00/54" 0 0 50 H I L BNN
+DRAW
+P 2 0 0 10 0 0 600 0 N
+P 2 0 0 10 600 0 600 600 N
+P 2 0 0 10 600 600 0 600 N
+P 2 0 0 10 0 600 0 0 N
+T 0 0 630 50 0 0 0 703W-00/54 Normal 0 L B
+X 1 1 800 500 200 L 40 40 0 0 B 
+X 2 2 800 300 200 L 40 40 0 0 B 
+X 3 3 800 100 200 L 40 40 0 0 B 
+ENDDRAW
+ENDDEF
+#
+# End Library
