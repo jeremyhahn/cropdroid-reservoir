@@ -14,10 +14,10 @@ Comment3 "License: Proprietary"
 Comment4 "Author: Jeremy Hahn"
 $EndDescr
 $Comp
-L dk_Barrel-Audio-Connectors:SJ1-3523N CON6
+L dk_Barrel-Audio-Connectors:SJ1-3523N CON7
 U 1 1 5E267ABC
 P 8700 1150
-F 0 "CON6" V 8705 1378 60  0000 L CNN
+F 0 "CON7" V 8705 1378 60  0000 L CNN
 F 1 "SJ1-3523N" V 8811 1378 60  0000 L CNN
 F 2 "digikey-footprints:Headphone_Jack_3.5mm_SJ1-3523N" H 8900 1350 60  0001 L CNN
 F 3 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 8900 1450 60  0001 L CNN
@@ -34,10 +34,10 @@ F 12 "Active" H 8900 2350 60  0001 L CNN "Status"
 	0    1    1    0   
 $EndComp
 $Comp
-L dk_Barrel-Audio-Connectors:SJ1-3523N CON7
+L dk_Barrel-Audio-Connectors:SJ1-3523N CON8
 U 1 1 5E26C111
 P 9750 1150
-F 0 "CON7" V 9755 1378 60  0000 L CNN
+F 0 "CON8" V 9755 1378 60  0000 L CNN
 F 1 "SJ1-3523N" V 9861 1378 60  0000 L CNN
 F 2 "digikey-footprints:Headphone_Jack_3.5mm_SJ1-3523N" H 9950 1350 60  0001 L CNN
 F 3 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 9950 1450 60  0001 L CNN
@@ -87,10 +87,10 @@ Connection ~ 9750 3000
 Wire Wire Line
 	9750 3000 9750 3200
 $Comp
-L dk_Barrel-Audio-Connectors:SJ1-3523N CON5
+L dk_Barrel-Audio-Connectors:SJ1-3523N CON6
 U 1 1 5E245E3A
 P 7650 1150
-F 0 "CON5" V 7655 1378 60  0000 L CNN
+F 0 "CON6" V 7655 1378 60  0000 L CNN
 F 1 "SJ1-3523N" V 7761 1378 60  0000 L CNN
 F 2 "digikey-footprints:Headphone_Jack_3.5mm_SJ1-3523N" H 7850 1350 60  0001 L CNN
 F 3 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 7850 1450 60  0001 L CNN
@@ -135,10 +135,10 @@ Wire Wire Line
 Wire Wire Line
 	8050 2900 8050 3400
 $Comp
-L power:GND #PWR09
+L power:GND #PWR011
 U 1 1 5E368C4D
 P 6700 5950
-F 0 "#PWR09" H 6700 5700 50  0001 C CNN
+F 0 "#PWR011" H 6700 5700 50  0001 C CNN
 F 1 "GND" H 6705 5777 50  0000 C CNN
 F 2 "" H 6700 5950 50  0001 C CNN
 F 3 "" H 6700 5950 50  0001 C CNN
@@ -160,10 +160,10 @@ Wire Wire Line
 Wire Wire Line
 	7750 2350 7500 2350
 $Comp
-L power:GND #PWR06
+L power:GND #PWR08
 U 1 1 5E50DFCC
 P 4350 7050
-F 0 "#PWR06" H 4350 6800 50  0001 C CNN
+F 0 "#PWR08" H 4350 6800 50  0001 C CNN
 F 1 "GND" H 4355 6877 50  0000 C CNN
 F 2 "" H 4350 7050 50  0001 C CNN
 F 3 "" H 4350 7050 50  0001 C CNN
@@ -171,34 +171,14 @@ F 3 "" H 4350 7050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L dk_Rectangular-Connectors-Headers-Male-Pins:640456-3 J1
-U 1 1 5E4DFBF1
-P 1300 5250
-F 0 "J1" H 1578 5304 50  0000 L CNN
-F 1 "640456-3" H 1578 5213 50  0000 L CNN
-F 2 "digikey-footprints:PinHeader_1x3_P2.54_Drill1.1mm" H 1500 5450 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=640456&DocType=Customer+Drawing&DocLang=English" H 1500 5550 60  0001 L CNN
-F 4 "A19470-ND" H 1500 5650 60  0001 L CNN "Digi-Key_PN"
-F 5 "640456-3" H 1500 5750 60  0001 L CNN "MPN"
-F 6 "Connectors, Interconnects" H 1500 5850 60  0001 L CNN "Category"
-F 7 "Rectangular Connectors - Headers, Male Pins" H 1500 5950 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=640456&DocType=Customer+Drawing&DocLang=English" H 1500 6050 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-amp-connectors/640456-3/A19470-ND/259010" H 1500 6150 60  0001 L CNN "DK_Detail_Page"
-F 10 "CONN HEADER VERT 3POS 2.54MM" H 1500 6250 60  0001 L CNN "Description"
-F 11 "TE Connectivity AMP Connectors" H 1500 6350 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 1500 6450 60  0001 L CNN "Status"
-	1    1300 5250
-	0    1    1    0   
-$EndComp
-$Comp
 L Device:R R2
 U 1 1 5E4F0021
-P 2100 5400
-F 0 "R2" H 2170 5446 50  0000 L CNN
-F 1 "10k" H 2170 5355 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2030 5400 50  0001 C CNN
-F 3 "~" H 2100 5400 50  0001 C CNN
-	1    2100 5400
+P 2100 5700
+F 0 "R2" H 2170 5746 50  0000 L CNN
+F 1 "10k" H 2170 5655 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2030 5700 50  0001 C CNN
+F 3 "~" H 2100 5700 50  0001 C CNN
+	1    2100 5700
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -214,10 +194,10 @@ F 4 "1-1393210-4" H 3800 3050 50  0001 L BNN "Field4"
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+12V #PWR011
+L power:+12V #PWR013
 U 1 1 5E6A5234
 P 9400 2100
-F 0 "#PWR011" H 9400 1950 50  0001 C CNN
+F 0 "#PWR013" H 9400 1950 50  0001 C CNN
 F 1 "+12V" H 9415 2273 50  0000 C CNN
 F 2 "" H 9400 2100 50  0001 C CNN
 F 3 "" H 9400 2100 50  0001 C CNN
@@ -239,17 +219,9 @@ F 4 "1-1393210-4" H 4850 3050 50  0001 L BNN "Field4"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6200 2850 6200 2450
-Wire Wire Line
 	6200 3250 6250 3250
 Wire Wire Line
-	6250 3250 6250 2400
-Wire Wire Line
-	4100 2850 4100 2450
-Wire Wire Line
 	4100 3250 4150 3250
-Wire Wire Line
-	4150 3250 4150 2400
 $Bitmap
 Pos 9500 5350
 Scale 1.000000
@@ -1493,10 +1465,10 @@ Wire Wire Line
 Wire Wire Line
 	7800 3400 8050 3400
 $Comp
-L SAMTEC-MTSW-118-10-X-D-640:SAMTEC-MTSW-118-10-X-D-640 J5
+L SAMTEC-MTSW-118-10-X-D-640:SAMTEC-MTSW-118-10-X-D-640 J3
 U 1 1 5E3977FD
 P 4550 5350
-F 0 "J5" H 5638 5717 50  0000 L CNN
+F 0 "J3" H 5638 5717 50  0000 L CNN
 F 1 "SAMTEC-MTSW-118-10-X-D-640" H 5638 5626 50  0000 C CNN
 F 2 "SAMTEC-MTSW-118-10-X-D-640:SAMTEC-MTSW-118-10-X-D-640" H 4550 5350 50  0001 L BNN
 F 3 "" H 4550 5350 50  0001 C CNN
@@ -1599,16 +1571,12 @@ Connection ~ 4250 2850
 Wire Wire Line
 	4250 3150 4550 3150
 Wire Wire Line
-	5150 2850 5150 2500
-Wire Wire Line
 	5150 3250 5200 3250
-Wire Wire Line
-	5200 3250 5200 2450
 $Comp
-L dk_Barrel-Audio-Connectors:SJ1-3523N CON4
+L dk_Barrel-Audio-Connectors:SJ1-3523N CON5
 U 1 1 5E4519B8
 P 6600 6350
-F 0 "CON4" V 6605 6578 60  0000 L CNN
+F 0 "CON5" V 6605 6578 60  0000 L CNN
 F 1 "SJ1-3523N" V 6711 6578 60  0000 L CNN
 F 2 "digikey-footprints:Headphone_Jack_3.5mm_SJ1-3523N" H 6800 6550 60  0001 L CNN
 F 3 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 6800 6650 60  0001 L CNN
@@ -1625,10 +1593,10 @@ F 12 "Active" H 6800 7550 60  0001 L CNN "Status"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L dk_Barrel-Audio-Connectors:SJ1-3523N CON2
+L dk_Barrel-Audio-Connectors:SJ1-3523N CON3
 U 1 1 5E3F3079
 P 2700 6300
-F 0 "CON2" V 2705 6528 60  0000 L CNN
+F 0 "CON3" V 2705 6528 60  0000 L CNN
 F 1 "SJ1-3523N" V 2811 6528 60  0000 L CNN
 F 2 "digikey-footprints:Headphone_Jack_3.5mm_SJ1-3523N" H 2900 6500 60  0001 L CNN
 F 3 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 2900 6600 60  0001 L CNN
@@ -1676,10 +1644,10 @@ F 3 "~" H 2100 4650 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L dk_Barrel-Audio-Connectors:SJ1-3523N CON1
+L dk_Barrel-Audio-Connectors:SJ1-3523N CON2
 U 1 1 5E481A9A
 P 1250 4600
-F 0 "CON1" V 1255 4828 60  0000 L CNN
+F 0 "CON2" V 1255 4828 60  0000 L CNN
 F 1 "SJ1-3523N" V 1361 4828 60  0000 L CNN
 F 2 "digikey-footprints:Headphone_Jack_3.5mm_SJ1-3523N" H 1450 4800 60  0001 L CNN
 F 3 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 1450 4900 60  0001 L CNN
@@ -1709,44 +1677,39 @@ Connection ~ 2100 4800
 $Comp
 L power:GND #PWR01
 U 1 1 5E5EB441
-P 1400 5450
-F 0 "#PWR01" H 1400 5200 50  0001 C CNN
-F 1 "GND" H 1405 5277 50  0000 C CNN
-F 2 "" H 1400 5450 50  0001 C CNN
-F 3 "" H 1400 5450 50  0001 C CNN
-	1    1400 5450
+P 1400 5750
+F 0 "#PWR01" H 1400 5500 50  0001 C CNN
+F 1 "GND" H 1405 5577 50  0000 C CNN
+F 2 "" H 1400 5750 50  0001 C CNN
+F 3 "" H 1400 5750 50  0001 C CNN
+	1    1400 5750
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
 	4350 5350 3700 5350
 Wire Wire Line
-	3700 5350 3700 5250
-Wire Wire Line
 	3700 4500 2100 4500
 Connection ~ 2100 4500
 Wire Wire Line
-	1400 5250 2100 5250
+	1400 5550 2100 5550
 Wire Wire Line
-	2100 5250 3700 5250
-Connection ~ 2100 5250
-Connection ~ 3700 5250
+	2100 5550 3700 5550
+Connection ~ 2100 5550
 Wire Wire Line
-	3700 5250 3700 4500
+	2100 5850 1850 5850
 Wire Wire Line
-	2100 5550 1850 5550
+	1850 5850 1850 5650
 Wire Wire Line
-	1850 5550 1850 5350
+	1850 5650 1400 5650
 Wire Wire Line
-	1850 5350 1400 5350
-Wire Wire Line
-	2100 5550 2100 7300
+	2100 5850 2100 7300
 Wire Wire Line
 	2100 7300 5700 7300
 Wire Wire Line
 	5700 7300 5700 6350
 Wire Wire Line
 	5700 6350 5550 6350
-Connection ~ 2100 5550
+Connection ~ 2100 5850
 Wire Wire Line
 	9650 1550 9650 2800
 Wire Wire Line
@@ -1755,10 +1718,10 @@ Connection ~ 9650 2800
 Wire Wire Line
 	9650 2800 9650 3400
 $Comp
-L dk_Barrel-Audio-Connectors:SJ1-3523N CON3
+L dk_Barrel-Audio-Connectors:SJ1-3523N CON4
 U 1 1 5E21D609
 P 6600 1150
-F 0 "CON3" V 6605 1378 60  0000 L CNN
+F 0 "CON4" V 6605 1378 60  0000 L CNN
 F 1 "SJ1-3523N" V 6711 1378 60  0000 L CNN
 F 2 "digikey-footprints:Headphone_Jack_3.5mm_SJ1-3523N" H 6800 1350 60  0001 L CNN
 F 3 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 6800 1450 60  0001 L CNN
@@ -1796,7 +1759,7 @@ Text Notes 6400 6750 0    50   ~ 0
 Analog 1
 Text Notes 600  4650 0    50   ~ 0
 OneWire
-Text Notes 1200 5150 0    50   ~ 0
+Text Notes 1200 5450 0    50   ~ 0
 DHT22
 Text Notes 8700 3550 0    50   ~ 0
 Channel 0
@@ -1807,10 +1770,10 @@ Wire Wire Line
 Wire Wire Line
 	3200 1950 3200 2850
 $Comp
-L 3-213598-2:3-213598-2 J6
+L 3-213598-2:3-213598-2 J4
 U 1 1 5E4E8095
 P 4850 950
-F 0 "J6" H 4850 1215 50  0000 C CNN
+F 0 "J4" H 4850 1215 50  0000 C CNN
 F 1 "3-213598-2" H 4850 1124 50  0000 C CNN
 F 2 "3-213598-2:TE_3-213598-2" H 4850 950 50  0001 L BNN
 F 3 "https://www.te.com/usa-en/product-3-213598-2.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493" H 4850 950 50  0001 L BNN
@@ -1821,10 +1784,10 @@ F 6 "Convenience Outlet" H 4850 950 50  0001 L BNN "Field6"
 	1    0    0    -1  
 $EndComp
 $Comp
-L 3-213598-2:3-213598-2 J8
+L 3-213598-2:3-213598-2 J5
 U 1 1 5E4E8CAA
 P 5900 950
-F 0 "J8" H 5900 1215 50  0000 C CNN
+F 0 "J5" H 5900 1215 50  0000 C CNN
 F 1 "3-213598-2" H 5900 1124 50  0000 C CNN
 F 2 "3-213598-2:TE_3-213598-2" H 5900 950 50  0001 L BNN
 F 3 "https://www.te.com/usa-en/product-3-213598-2.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493" H 5900 950 50  0001 L BNN
@@ -1837,96 +1800,8 @@ $EndComp
 Wire Wire Line
 	5900 1150 4850 1150
 Connection ~ 4850 1150
-$Comp
-L TB005-762-02BE:TB005-762-02BE J4
-U 1 1 5E45B4CA
-P 3800 1500
-F 0 "J4" V 3739 1370 50  0000 R CNN
-F 1 "TB005-762-02BE" V 3648 1370 50  0000 R CNN
-F 2 "TB005-762-02BE:CUI_TB005-762-02BE" H 3800 1500 50  0001 L BNN
-F 3 "CUI" H 3800 1500 50  0001 L BNN
-F 4 "Manufacturer Recommendations" H 3800 1500 50  0001 L BNN "Field4"
-	1    3800 1500
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	3550 1900 3700 1900
-Wire Wire Line
-	3700 1900 3700 2450
-Wire Wire Line
-	3700 2450 4100 2450
-Connection ~ 3700 1900
-Wire Wire Line
-	3800 1900 3800 2400
-Wire Wire Line
-	3800 2400 4150 2400
-Wire Wire Line
-	3800 1900 4000 1900
-Wire Wire Line
-	4000 1900 4000 950 
-Connection ~ 3800 1900
-$Comp
-L TB005-762-02BE:TB005-762-02BE J7
-U 1 1 5E6575C8
-P 4850 1500
-F 0 "J7" V 4789 1370 50  0000 R CNN
-F 1 "TB005-762-02BE" V 4698 1370 50  0000 R CNN
-F 2 "TB005-762-02BE:CUI_TB005-762-02BE" H 4850 1500 50  0001 L BNN
-F 3 "CUI" H 4850 1500 50  0001 L BNN
-F 4 "Manufacturer Recommendations" H 4850 1500 50  0001 L BNN "Field4"
-	1    4850 1500
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	4600 1250 4600 1900
-Wire Wire Line
-	4600 1900 4750 1900
-Wire Wire Line
-	4750 2500 4750 1900
-Wire Wire Line
-	4750 2500 5150 2500
-Connection ~ 4750 1900
-Wire Wire Line
-	4850 2450 4850 1900
-Wire Wire Line
-	4850 2450 5200 2450
-Wire Wire Line
-	5050 950  5050 1900
-Wire Wire Line
-	5050 1900 4850 1900
-Connection ~ 4850 1900
-$Comp
-L TB005-762-02BE:TB005-762-02BE J9
-U 1 1 5E69E928
-P 5900 1500
-F 0 "J9" V 5839 1370 50  0000 R CNN
-F 1 "TB005-762-02BE" V 5748 1370 50  0000 R CNN
-F 2 "TB005-762-02BE:CUI_TB005-762-02BE" H 5900 1500 50  0001 L BNN
-F 3 "CUI" H 5900 1500 50  0001 L BNN
-F 4 "Manufacturer Recommendations" H 5900 1500 50  0001 L BNN "Field4"
-	1    5900 1500
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	5650 1250 5650 1900
-Wire Wire Line
-	5650 1900 5800 1900
-Wire Wire Line
-	5800 1900 5800 2450
-Wire Wire Line
-	5800 2450 6200 2450
-Connection ~ 5800 1900
-Wire Wire Line
-	5900 2400 6250 2400
-Wire Wire Line
-	5900 2400 5900 1900
 Wire Wire Line
 	7000 1950 3200 1950
-Wire Wire Line
-	6100 950  6100 1900
-Wire Wire Line
-	6100 1900 5900 1900
-Connection ~ 5900 1900
 $Comp
 L Device:LED D2
 U 1 1 5E710626
@@ -2010,10 +1885,10 @@ Wire Wire Line
 Connection ~ 4250 3150
 Connection ~ 3200 3150
 $Comp
-L power:GND #PWR05
+L power:GND #PWR07
 U 1 1 5E829CC0
 P 3500 3800
-F 0 "#PWR05" H 3500 3550 50  0001 C CNN
+F 0 "#PWR07" H 3500 3550 50  0001 C CNN
 F 1 "GND" H 3505 3627 50  0000 C CNN
 F 2 "" H 3500 3800 50  0001 C CNN
 F 3 "" H 3500 3800 50  0001 C CNN
@@ -2021,10 +1896,10 @@ F 3 "" H 3500 3800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR07
+L power:GND #PWR09
 U 1 1 5E82A2F2
 P 4550 3800
-F 0 "#PWR07" H 4550 3550 50  0001 C CNN
+F 0 "#PWR09" H 4550 3550 50  0001 C CNN
 F 1 "GND" H 4555 3627 50  0000 C CNN
 F 2 "" H 4550 3800 50  0001 C CNN
 F 3 "" H 4550 3800 50  0001 C CNN
@@ -2032,10 +1907,10 @@ F 3 "" H 4550 3800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR08
+L power:GND #PWR010
 U 1 1 5E82A78B
 P 5600 3800
-F 0 "#PWR08" H 5600 3550 50  0001 C CNN
+F 0 "#PWR010" H 5600 3550 50  0001 C CNN
 F 1 "GND" H 5605 3627 50  0000 C CNN
 F 2 "" H 5600 3800 50  0001 C CNN
 F 3 "" H 5600 3800 50  0001 C CNN
@@ -2043,10 +1918,10 @@ F 3 "" H 5600 3800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR010
+L power:GND #PWR012
 U 1 1 5E477AA1
 P 8050 3400
-F 0 "#PWR010" H 8050 3150 50  0001 C CNN
+F 0 "#PWR012" H 8050 3150 50  0001 C CNN
 F 1 "GND" H 8055 3227 50  0000 C CNN
 F 2 "" H 8050 3400 50  0001 C CNN
 F 3 "" H 8050 3400 50  0001 C CNN
@@ -2055,10 +1930,10 @@ F 3 "" H 8050 3400 50  0001 C CNN
 $EndComp
 Connection ~ 8050 3400
 $Comp
-L power:GND #PWR04
+L power:GND #PWR06
 U 1 1 5E4A5C47
 P 2800 5900
-F 0 "#PWR04" H 2800 5650 50  0001 C CNN
+F 0 "#PWR06" H 2800 5650 50  0001 C CNN
 F 1 "GND" H 2805 5727 50  0000 C CNN
 F 2 "" H 2800 5900 50  0001 C CNN
 F 3 "" H 2800 5900 50  0001 C CNN
@@ -2109,10 +1984,10 @@ $EndComp
 Wire Wire Line
 	4850 1150 3800 1150
 $Comp
-L 3-213598-2:3-213598-2 J3
+L 3-213598-2:3-213598-2 J2
 U 1 1 5E3E9D39
 P 3800 950
-F 0 "J3" H 3800 1215 50  0000 C CNN
+F 0 "J2" H 3800 1215 50  0000 C CNN
 F 1 "3-213598-2" H 3800 1124 50  0000 C CNN
 F 2 "3-213598-2:TE_3-213598-2" H 3800 950 50  0001 L BNN
 F 3 "https://www.te.com/usa-en/product-3-213598-2.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493" H 3800 950 50  0001 L BNN
@@ -2123,18 +1998,16 @@ F 6 "Convenience Outlet" H 3800 950 50  0001 L BNN "Field6"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4650 600  4650 950 
-Wire Wire Line
-	5700 550  3100 550 
+	5700 550  4650 550 
 Wire Wire Line
 	5700 550  5700 950 
 Text Notes 4650 5350 0    50   ~ 0
 +5v
 $Comp
-L power:+12V #PWR03
+L power:+12V #PWR05
 U 1 1 5E6AD241
 P 2500 2900
-F 0 "#PWR03" H 2500 2750 50  0001 C CNN
+F 0 "#PWR05" H 2500 2750 50  0001 C CNN
 F 1 "+12V" H 2515 3073 50  0000 C CNN
 F 2 "" H 2500 2900 50  0001 C CNN
 F 3 "" H 2500 2900 50  0001 C CNN
@@ -2175,10 +2048,10 @@ F 3 "" H 1350 3050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR0101
+L power:GND #PWR04
 U 1 1 5E48932C
 P 2300 2250
-F 0 "#PWR0101" H 2300 2000 50  0001 C CNN
+F 0 "#PWR04" H 2300 2000 50  0001 C CNN
 F 1 "GND" H 2305 2077 50  0000 C CNN
 F 2 "" H 2300 2250 50  0001 C CNN
 F 3 "" H 2300 2250 50  0001 C CNN
@@ -2186,10 +2059,10 @@ F 3 "" H 2300 2250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR0102
+L power:GND #PWR03
 U 1 1 5E48A118
 P 1950 2950
-F 0 "#PWR0102" H 1950 2700 50  0001 C CNN
+F 0 "#PWR03" H 1950 2700 50  0001 C CNN
 F 1 "GND" H 1955 2777 50  0000 C CNN
 F 2 "" H 1950 2950 50  0001 C CNN
 F 3 "" H 1950 2950 50  0001 C CNN
@@ -2215,21 +2088,6 @@ Wire Wire Line
 Wire Wire Line
 	4350 4350 4350 5350
 Connection ~ 4350 5350
-$Comp
-L 703W-00_52:703W-00_52 J12
-U 1 1 5E3DDE7C
-P 1200 800
-F 0 "J12" V 1189 570 50  0000 R CNN
-F 1 "703W-00_52" V 1098 570 50  0000 R CNN
-F 2 "703W-00_54:52" H 1200 800 50  0001 L BNN
-F 3 "Qualtek" H 1200 800 50  0001 L BNN
-F 4 "B" H 1200 800 50  0001 L BNN "Field4"
-F 5 "Manufacturer Recommendations" H 1200 800 50  0001 L BNN "Field5"
-	1    1200 800 
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	3100 550  3100 600 
 $Comp
 L PSK-6B-S5:PSK-6B-S5 PS1
 U 1 1 5E4112C1
@@ -2272,33 +2130,89 @@ Connection ~ 900  1200
 Wire Wire Line
 	900  1200 1100 1200
 Wire Wire Line
-	3100 600  4650 600 
-Connection ~ 3100 600 
-Wire Wire Line
-	3100 600  3100 950 
-Wire Wire Line
-	3100 950  3600 950 
-Wire Wire Line
-	3100 950  3100 1300
-Wire Wire Line
 	3100 1300 1200 1300
-Connection ~ 3100 950 
-Wire Wire Line
-	5650 1250 4600 1250
-Wire Wire Line
-	4600 1250 3550 1250
-Wire Wire Line
-	3550 1250 3550 1900
-Connection ~ 4600 1250
-Wire Wire Line
-	3550 1250 1100 1250
 Wire Wire Line
 	1100 1250 1100 1200
-Connection ~ 3550 1250
-Connection ~ 1100 1200
 Wire Wire Line
 	1300 1200 3800 1200
 Wire Wire Line
 	3800 1200 3800 1150
 Connection ~ 3800 1150
+Wire Wire Line
+	4650 550  4650 950 
+Connection ~ 4650 550 
+Wire Wire Line
+	4650 550  3600 550 
+Wire Wire Line
+	3100 550  3100 1300
+Wire Wire Line
+	3600 950  3600 550 
+Connection ~ 3600 550 
+Wire Wire Line
+	3600 550  3100 550 
+Wire Wire Line
+	4150 950  4000 950 
+Wire Wire Line
+	4150 950  4150 3250
+Wire Wire Line
+	5200 950  5050 950 
+Wire Wire Line
+	5200 950  5200 3250
+Wire Wire Line
+	6250 950  6100 950 
+Wire Wire Line
+	6250 950  6250 3250
+Wire Wire Line
+	6200 1250 6200 2850
+Wire Wire Line
+	1100 1250 4100 1250
+Wire Wire Line
+	5150 1250 5150 2850
+Connection ~ 5150 1250
+Wire Wire Line
+	5150 1250 6200 1250
+Wire Wire Line
+	4100 1250 4100 2850
+Connection ~ 4100 1250
+Wire Wire Line
+	4100 1250 5150 1250
+$Comp
+L dk_Barrel-Audio-Connectors:SJ1-3523N CON1
+U 1 1 5E4C0F4A
+P 1000 5650
+F 0 "CON1" V 1005 5878 60  0000 L CNN
+F 1 "SJ1-3523N" V 1111 5878 60  0000 L CNN
+F 2 "digikey-footprints:Headphone_Jack_3.5mm_SJ1-3523N" H 1200 5850 60  0001 L CNN
+F 3 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 1200 5950 60  0001 L CNN
+F 4 "CP1-3523N-ND" H 1200 6050 60  0001 L CNN "Digi-Key_PN"
+F 5 "SJ1-3523N" H 1200 6150 60  0001 L CNN "MPN"
+F 6 "Connectors, Interconnects" H 1200 6250 60  0001 L CNN "Category"
+F 7 "Barrel - Audio Connectors" H 1200 6350 60  0001 L CNN "Family"
+F 8 "https://www.cui.com/product/resource/digikeypdf/sj1-352xn_series.pdf" H 1200 6450 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/cui-inc/SJ1-3523N/CP1-3523N-ND/738689" H 1200 6550 60  0001 L CNN "DK_Detail_Page"
+F 10 "CONN JACK STEREO 3.5MM R/A" H 1200 6650 60  0001 L CNN "Description"
+F 11 "CUI Inc." H 1200 6750 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 1200 6850 60  0001 L CNN "Status"
+	1    1000 5650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 4500 3700 5350
+Connection ~ 3700 5350
+Wire Wire Line
+	3700 5350 3700 5550
+$Comp
+L 703W-00_52:703W-00_52 J1
+U 1 1 5E59D84D
+P 1200 800
+F 0 "J1" V 1189 570 50  0000 R CNN
+F 1 "703W-00_52" V 1098 570 50  0000 R CNN
+F 2 "QUALTEK_703W-00_52" H 1200 800 50  0001 L BNN
+F 3 "B" H 1200 800 50  0001 L BNN
+F 4 "Manufacturer Recommendations" H 1200 800 50  0001 L BNN "Field4"
+F 5 "Qualtek" H 1200 800 50  0001 L BNN "Field5"
+	1    1200 800 
+	0    -1   -1   0   
+$EndComp
+Connection ~ 1100 1200
 $EndSCHEMATC

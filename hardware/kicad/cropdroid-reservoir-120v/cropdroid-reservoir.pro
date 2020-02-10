@@ -1,4 +1,4 @@
-update=Sun 09 Feb 2020 03:59:38 PM EST
+update=Mon 10 Feb 2020 04:59:26 AM EST
 version=1
 last_client=kicad
 [general]
@@ -25,7 +25,7 @@ ERC_TestSimilarLabels=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=
-LastNetListRead=cropdroid.net
+LastNetListRead=cropdroid-reservoir.net
 CopperLayerCount=2
 BoardThickness=1.6
 AllowMicroVias=0
@@ -42,11 +42,14 @@ TrackWidth1=0.254
 TrackWidth2=0.762
 TrackWidth3=2.794
 TrackWidth4=3.81
-TrackWidth5=5.08
-TrackWidth6=6.35
-TrackWidth7=12.7
+TrackWidth5=4.445
+TrackWidth6=5.08
+TrackWidth7=6.35
+TrackWidth8=12.7
 ViaDiameter1=0.762
 ViaDrill1=0.381
+ViaDiameter2=5.08
+ViaDrill2=0.381
 dPairWidth1=0.2
 dPairGap1=0.25
 dPairViaGap1=0.25
@@ -255,7 +258,7 @@ dPairViaGap=0.25
 [pcbnew/Netclasses/1]
 Name=MainsAC
 Clearance=3.048
-TrackWidth=3.81
+TrackWidth=5.08
 ViaDiameter=2.032
 ViaDrill=0.381
 uViaDiameter=0.762

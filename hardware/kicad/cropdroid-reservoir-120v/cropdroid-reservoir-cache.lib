@@ -43,9 +43,9 @@ DEF 703W-00_52_703W-00_52 J 0 40 Y Y 1 L N
 F0 "J" -200 220 50 H V L BNN
 F1 "703W-00_52_703W-00_52" -200 -300 50 H V L BNN
 F2 "QUALTEK_703W-00/52" 0 0 50 H I L BNN
-F3 "Qualtek" 0 0 50 H I L BNN
-F4 "B" 0 0 50 H I L BNN
-F5 "Manufacturer Recommendations" 0 0 50 H I L BNN
+F3 "B" 0 0 50 H I L BNN
+F4 "Manufacturer Recommendations" 0 0 50 H I L BNN
+F5 "Qualtek" 0 0 50 H I L BNN
 DRAW
 C 100 -50 7 0 0 10 N
 C 100 -50 10 0 0 10 N
@@ -246,24 +246,6 @@ X NO 4 300 -200 100 L 40 40 0 0 P
 ENDDRAW
 ENDDEF
 #
-# TB005-762-02BE_TB005-762-02BE
-#
-DEF TB005-762-02BE_TB005-762-02BE J 0 40 Y Y 1 L N
-F0 "J" -220 200 50 H V L BNN
-F1 "TB005-762-02BE_TB005-762-02BE" -200 -200 50 H V L BNN
-F2 "CUI_TB005-762-02BE" 0 0 50 H I L BNN
-F3 "CUI" 0 0 50 H I L BNN
-F4 "Manufacturer Recommendations" 0 0 50 H I L BNN
-DRAW
-P 2 0 0 10 -200 -100 -200 200 N
-P 2 0 0 10 -200 200 200 200 N
-P 2 0 0 10 200 -100 -200 -100 N
-P 2 0 0 10 200 200 200 -100 N
-X 1 1 -400 100 200 R 40 40 0 0 P
-X 2 2 -400 0 200 R 40 40 0 0 P
-ENDDRAW
-ENDDEF
-#
 # dk_Barrel-Audio-Connectors_SJ1-3523N
 #
 DEF dk_Barrel-Audio-Connectors_SJ1-3523N CON 0 2 Y Y 1 F N
@@ -288,33 +270,6 @@ P 6 0 1 0 200 -100 -150 -100 -150 100 -200 100 -200 -50 -150 -50 N
 X S 1 400 -100 200 L 50 50 1 1 P
 X T 2 400 0 200 L 50 50 1 1 P
 X R 3 400 100 200 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# dk_Rectangular-Connectors-Headers-Male-Pins_640456-3
-#
-DEF dk_Rectangular-Connectors-Headers-Male-Pins_640456-3 J 0 40 Y Y 1 F N
-F0 "J" -100 50 50 H V R CNN
-F1 "dk_Rectangular-Connectors-Headers-Male-Pins_640456-3" 100 -150 50 H V C CNN
-F2 "digikey-footprints:PinHeader_1x3_P2.54_Drill1.1mm" 200 200 60 H I L CNN
-F3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=640456&DocType=Customer+Drawing&DocLang=English" 200 300 60 H I L CNN
-F4 "A19470-ND" 200 400 60 H I L CNN "Digi-Key_PN"
-F5 "640456-3" 200 500 60 H I L CNN "MPN"
-F6 "Connectors, Interconnects" 200 600 60 H I L CNN "Category"
-F7 "Rectangular Connectors - Headers, Male Pins" 200 700 60 H I L CNN "Family"
-F8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=640456&DocType=Customer+Drawing&DocLang=English" 200 800 60 H I L CNN "DK_Datasheet_Link"
-F9 "/product-detail/en/te-connectivity-amp-connectors/640456-3/A19470-ND/259010" 200 900 60 H I L CNN "DK_Detail_Page"
-F10 "CONN HEADER VERT 3POS 2.54MM" 200 1000 60 H I L CNN "Description"
-F11 "TE Connectivity AMP Connectors" 200 1100 60 H I L CNN "Manufacturer"
-F12 "Active" 200 1200 60 H I L CNN "Status"
-DRAW
-S -50 0 250 -100 1 1 0 f
-S -10 -45 10 -65 1 1 0 F
-S 90 -45 110 -65 1 1 0 F
-S 190 -45 210 -65 1 1 0 F
-X ~ 1 0 100 100 D 50 50 1 1 P
-X ~ 2 100 100 100 D 50 50 1 1 P
-X ~ 3 200 100 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
