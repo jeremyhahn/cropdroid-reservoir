@@ -1,0 +1,1 @@
+- Swap wires between pins 1 and 2 (channel 4, 5, 6)
