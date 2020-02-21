@@ -107,27 +107,13 @@ F 12 "Active" H 8550 2350 60  0001 L CNN "Status"
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	9300 1550 9300 2100
-Wire Wire Line
-	8250 1550 8250 2100
-Connection ~ 8250 2100
-Wire Wire Line
-	7200 1550 7200 2100
-Wire Wire Line
-	7200 2100 7500 2100
+	7300 2100 7500 2100
 Connection ~ 7500 2100
-Wire Wire Line
-	8250 2100 8700 2100
 Wire Wire Line
 	9300 3300 8700 3300
 Wire Wire Line
 	8700 3300 8700 2100
 Connection ~ 8700 2100
-Wire Wire Line
-	8700 2100 9300 2100
-Connection ~ 9300 2100
-Wire Wire Line
-	9300 2100 10100 2100
 Wire Wire Line
 	10100 2100 10100 2600
 Wire Wire Line
@@ -146,15 +132,9 @@ F 3 "" H 6700 5950 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	7300 1850 8000 1850
+	8250 2200 8100 2200
 Wire Wire Line
-	8350 1550 8350 2200
-Wire Wire Line
-	8350 2200 8100 2200
-Wire Wire Line
-	9400 1550 9400 1950
-Wire Wire Line
-	9400 1950 8450 1950
+	9300 1950 8450 1950
 Wire Wire Line
 	8450 1950 8450 2350
 Wire Wire Line
@@ -1521,8 +1501,6 @@ $EndComp
 Wire Wire Line
 	2800 2850 3100 2850
 Connection ~ 2800 2850
-Wire Wire Line
-	7500 2100 8250 2100
 $Comp
 L T9AS1D12-15:T9AS1D12-15 K3
 U 1 1 5E3D0A5B
@@ -2355,8 +2333,6 @@ Connection ~ 2800 4050
 Wire Wire Line
 	2800 4050 1700 4050
 Wire Wire Line
-	7300 1850 7300 1550
-Wire Wire Line
 	2400 2150 2400 4350
 Wire Wire Line
 	9500 4650 9500 4050
@@ -2369,4 +2345,28 @@ Connection ~ 8700 3300
 Connection ~ 8700 4050
 Wire Wire Line
 	8700 4050 5950 4050
+Wire Wire Line
+	7200 1850 7200 1550
+Wire Wire Line
+	7200 1850 8000 1850
+Wire Wire Line
+	7300 2100 7300 1550
+Wire Wire Line
+	7500 2100 8350 2100
+Wire Wire Line
+	8350 1550 8350 2100
+Connection ~ 8350 2100
+Wire Wire Line
+	8350 2100 8700 2100
+Wire Wire Line
+	8250 2200 8250 1550
+Wire Wire Line
+	8700 2100 9400 2100
+Wire Wire Line
+	9300 1550 9300 1950
+Wire Wire Line
+	9400 1550 9400 2100
+Connection ~ 9400 2100
+Wire Wire Line
+	9400 2100 10100 2100
 $EndSCHEMATC
