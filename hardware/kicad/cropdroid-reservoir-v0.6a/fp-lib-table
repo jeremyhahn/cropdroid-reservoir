@@ -1,0 +1,12 @@
+(fp_lib_table
+  (lib (name 3-213598-2)(type KiCad)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/3-213598-2)(options "")(descr ""))
+  (lib (name T9AS1D12-15)(type KiCad)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/T9AS1D12-15)(options "")(descr ""))
+  (lib (name 1751293)(type KiCad)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/1751293)(options "")(descr ""))
+  (lib (name libraries)(type KiCad)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries)(options "")(descr ""))
+  (lib (name IRM-30-12)(type KiCad)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/IRM-30-12)(options "")(descr ""))
+  (lib (name PSK-6B-S5)(type KiCad)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/PSK-6B-S5)(options "")(descr ""))
+  (lib (name 703W-00_52)(type KiCad)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/703W-00_52/QUALTEK_703W-00)(options "")(descr ""))
+  (lib (name SAMTEC-MTSW-118-10-X-D-640)(type KiCad)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/SAMTEC-MTSW-118-10-X-D-640)(options "")(descr ""))
+  (lib (name 2172034-1)(type KiCad)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/2172034-1)(options "")(descr ""))
+  (lib (name drill-hole)(type KiCad)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/drill-hole)(options "")(descr ""))
+)

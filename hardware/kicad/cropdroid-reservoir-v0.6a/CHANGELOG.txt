@@ -1,0 +1,9 @@
+v0.5a
+- Swap wires between pins 1 and 2 (channel 4, 5, 6)
+- Change board height to accomodate vertical facing receptacles
+
+v0.6a
+- Fix upside down IRM-30-12 footprint
+- Flip LED footprints
+- Replace audio jacks with dc power and usb jacks
+- Shorten board length

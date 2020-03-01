@@ -1,0 +1,11 @@
+(sym_lib_table
+  (lib (name T9AS1D12-15)(type Legacy)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/T9AS1D12-15/T9AS1D12-15.lib)(options "")(descr ""))
+  (lib (name 3-213598-2)(type Legacy)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/3-213598-2/3-213598-2.lib)(options "")(descr ""))
+  (lib (name cropdroid)(type Legacy)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/cropdroid.lib)(options "")(descr ""))
+  (lib (name 703W-00_52)(type Legacy)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/703W-00_52/703W-00_52.lib)(options "")(descr ""))
+  (lib (name IRM-30-12)(type Legacy)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/IRM-30-12/IRM-30-12.lib)(options "")(descr ""))
+  (lib (name PSK-6B-S5)(type Legacy)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/PSK-6B-S5/PSK-6B-S5.lib)(options "")(descr ""))
+  (lib (name SAMTEC-MTSW-118-10-X-D-640)(type Legacy)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/SAMTEC-MTSW-118-10-X-D-640/SAMTEC-MTSW-118-10-X-D-640.lib)(options "")(descr ""))
+  (lib (name PJ-102A)(type Legacy)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/PJ-102A/PJ-102A.lib)(options "")(descr ""))
+  (lib (name 2172034-1)(type Legacy)(uri /home/jhahn/eclipse-workspace/cropdroid-reservoir/hardware/kicad/libraries/2172034-1/2172034-1.lib)(options "")(descr ""))
+)
