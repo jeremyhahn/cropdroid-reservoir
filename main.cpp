@@ -22,13 +22,13 @@ extern int  *__brkval;
 const char json_bracket_open[] = "{";
 const char json_bracket_close[] = "}";
 
-const char string_initializing[] PROGMEM = "Initializing reservoir controller...";
+const char string_initializing[] PROGMEM = "Initializing reservoir...";
 const char string_dhcp_failed[] PROGMEM = "DHCP Failed";
 const char string_http_200[] PROGMEM = "HTTP/1.1 200 OK";
 const char string_http_404[] PROGMEM = "HTTP/1.1 404 Not Found";
 const char string_http_500[] PROGMEM = "HTTP/1.1 500 Internal Server Error";
 const char string_http_content_type_json[] PROGMEM = "Content-Type: application/json";
-const char string_http_xpowered_by[] PROGMEM = "X-Powered-By: CropDroid v1.0";
+const char string_http_xpowered_by[] PROGMEM = "X-Powered-By: CropDroid";
 const char string_rest_address[] PROGMEM = "REST service listening on: ";
 const char string_switch_on[] PROGMEM = "Switching on";
 const char string_switch_off[] PROGMEM = "Switching off";
@@ -58,6 +58,8 @@ const char string_json_bracket_close[] PROGMEM = "}";
 const char string_json_error_invalid_channel[] PROGMEM = "{\"error\":\"Invalid channel\"}";
 const char string_json_reboot_true PROGMEM = "{\"reboot\":true}";
 const char string_json_reset_true PROGMEM = "{\"reset\":true}";
+const char string_hardware_version[] PROGMEM = "\"hardware\":\"res-v0.6a\",";
+const char string_firmware_version[] PROGMEM = "\"firmware\":\"0.0.2a\"";
 const char * const string_table[] PROGMEM = {
   string_initializing,
   string_dhcp_failed,
@@ -94,7 +96,9 @@ const char * const string_table[] PROGMEM = {
   string_json_bracket_close,
   string_json_error_invalid_channel,
   string_json_reboot_true,
-  string_json_reset_true
+  string_json_reset_true,
+  string_hardware_version,
+  string_firmware_version
 };
 int idx_initializing = 0,
     idx_dhcp_failed = 1,
@@ -131,7 +135,9 @@ int idx_initializing = 0,
 	idx_json_key_bracket_close = 32,
 	idx_json_error_invalid_channel = 33,
 	idx_json_reboot_true = 34,
-	idx_json_reset_true = 35;
+	idx_json_reset_true = 35,
+	idx_hardware_version = 36,
+	idx_firmware_version = 37;
 char string_buffer[60];
 char float_buffer[10];
 
@@ -177,6 +183,7 @@ void readResTemp();
 void debug(String msg);
 void switchOn(int pin);
 void switchOff(int pin);
+void handleActiveChannels();
 void handleWebRequest();
 void send404();
 void resetDefaults();
@@ -276,25 +283,30 @@ void setup(void) {
 
 void loop() {
 
-  digitalWrite(LED_BUILTIN, HIGH);
+  handleActiveChannels();
+  handleWebRequest();
 
   sensors.requestTemperatures();
   readResTemp();
   readTempHumidity();
+  handleActiveChannels();
+  handleWebRequest();
 
   readProbe(PH_ID, &PH);
+  handleActiveChannels();
   handleWebRequest();
 
   readProbe(EC_ID, NULL);
+  handleActiveChannels();
   handleWebRequest();
 
   readProbe(DO_ID, NULL);
+  handleActiveChannels();
   handleWebRequest();
 
   readProbe(ORP_ID, &ORP);
+  handleActiveChannels();
   handleWebRequest();
-
-  digitalWrite(LED_BUILTIN, LOW);
 }
 
 void readResTemp() {
@@ -455,8 +467,7 @@ void debug(String msg) {
   }
 }
 
-void handleWebRequest() {
-
+void handleActiveChannels() {
 	unsigned long currentMillis = millis();
 
 	for(int i=0; i<channel_size; i++) {
@@ -481,6 +492,9 @@ void handleWebRequest() {
 			}
 		}
 	}
+}
+
+void handleWebRequest() {
 
 	httpClient = httpServer.available();
 
@@ -763,6 +777,20 @@ void handleWebRequest() {
 
 					strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_reset_true])));
 					strcat(json, string_buffer);
+				}
+
+				// /sys
+				else if (strncmp(resource, "sys", 6) == 0) {
+
+					strcpy(json, json_bracket_open);
+
+						strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_hardware_version])));
+						strcat(json, string_buffer);
+
+						strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_firmware_version])));
+						strcat(json, string_buffer);
+
+					strcat(json, json_bracket_close);
 				}
 
 				else {

@@ -1504,11 +1504,11 @@ Channel 3
 Text Notes 10250 800  0    50   ~ 0
 Channel 0
 Text Notes 7250 800  0    50   ~ 0
-Channel 4
-Text Notes 8300 800  0    50   ~ 0
 Channel 5
-Text Notes 9250 800  0    50   ~ 0
+Text Notes 8300 800  0    50   ~ 0
 Channel 6
+Text Notes 9250 800  0    50   ~ 0
+Channel 7
 Text Notes 2900 6450 0    50   ~ 0
 Analog 0
 Text Notes 6450 6400 0    50   ~ 0
@@ -1888,7 +1888,7 @@ $EndComp
 Wire Wire Line
 	6250 2850 6250 2950
 Text Notes 6350 3450 0    50   ~ 0
-Channel 3
+Channel 4
 Wire Wire Line
 	5950 2850 6250 2850
 Wire Wire Line
