@@ -35,22 +35,22 @@ const char string_http_xpowered_by[] PROGMEM = "X-Powered-By: CropDroid";
 const char string_rest_address[] PROGMEM = "REST service listening on: ";
 const char string_switch_on[] PROGMEM = "Switching on";
 const char string_switch_off[] PROGMEM = "Switching off";
-const char string_json_key_metrics[] PROGMEM = "\"metrics\":[";
+const char string_json_key_metrics[] PROGMEM = "\"metrics\":{";
 const char string_json_key_mem[] PROGMEM = "\"mem\":";
-const char string_json_key_envTemp[] PROGMEM = "\"envTemp\":";
-const char string_json_key_envHumidity[] PROGMEM = "\"envHumidity\":";
-const char string_json_key_envHeatIndex[] PROGMEM = "\"envHeatIndex\":";
-const char string_json_key_ph[] PROGMEM = "\"PH\":";
-const char string_json_key_ec[] PROGMEM = "\"EC\":";
-const char string_json_key_tds[] PROGMEM = "\"TDS\":";
-const char string_json_key_sal[] PROGMEM = "\"SAL\":";
-const char string_json_key_sg[] PROGMEM = "\"SG\":";
-const char string_json_key_do_mgl[] PROGMEM = "\"DO_mgL\":";
-const char string_json_key_do_per[] PROGMEM = "\"DO_PER\":";
-const char string_json_key_orp[] PROGMEM = "\"ORP\":";
-const char string_json_key_resTemp[] PROGMEM = "\"resTemp\":";
-const char string_json_key_upperFloat[] PROGMEM = "\"upperFloat\":";
-const char string_json_key_lowerFloat[] PROGMEM = "\"lowerFloat\":";
+const char string_json_key_envTemp[] PROGMEM = ",\"envTemp\":";
+const char string_json_key_envHumidity[] PROGMEM = ",\"envHumidity\":";
+const char string_json_key_envHeatIndex[] PROGMEM = ",\"envHeatIndex\":";
+const char string_json_key_ph[] PROGMEM = ",\"PH\":";
+const char string_json_key_ec[] PROGMEM = ",\"EC\":";
+const char string_json_key_tds[] PROGMEM = ",\"TDS\":";
+const char string_json_key_sal[] PROGMEM = ",\"SAL\":";
+const char string_json_key_sg[] PROGMEM = ",\"SG\":";
+const char string_json_key_do_mgl[] PROGMEM = ",\"DO_mgL\":";
+const char string_json_key_do_per[] PROGMEM = ",\"DO_PER\":";
+const char string_json_key_orp[] PROGMEM = ",\"ORP\":";
+const char string_json_key_resTemp[] PROGMEM = ",\"resTemp\":";
+const char string_json_key_upperFloat[] PROGMEM = ",\"upperFloat\":";
+const char string_json_key_lowerFloat[] PROGMEM = ",\"lowerFloat\":";
 const char string_json_key_channels[] PROGMEM = ",\"channels\":[";
 const char string_json_key_channel[] PROGMEM = "\"channel\":";
 const char string_json_key_pin[] PROGMEM = ",\"pin\":";
@@ -559,126 +559,82 @@ void handleWebRequest() {
 					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_metrics])));
 					  strcat(json, string_buffer);
 
-					    strcat(json, json_bracket_open);
 					    strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_mem])));
 					    strcat(json, string_buffer);
 					    itoa(availableMemory(), float_buffer, 10);
 					    strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-					    strcat(json, json_bracket_open);
 					    strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_envTemp])));
 					    strcat(json, string_buffer);
 					    dtostrf(envTemp, 4, 2, float_buffer);
 					    strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-					    strcat(json, json_bracket_open);
 					    strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_envHumidity])));
 					    strcat(json, string_buffer);
 					    dtostrf(envHumidity, 4, 2, float_buffer);
 					    strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-					    strcat(json, json_bracket_open);
 					    strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_envHeatIndex])));
 					    strcat(json, string_buffer);
                       	dtostrf(envHeatIndex, 4, 2, float_buffer);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-                      	strcat(json, json_bracket_open);
                       	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_ph])));
                       	strcat(json, string_buffer);
                       	dtostrf(PH, 4, 2, float_buffer);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-                      	strcat(json, json_bracket_open);
                       	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_ec])));
                       	strcat(json, string_buffer);
                       	dtostrf(EC, 4, 2, float_buffer);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-                      	strcat(json, json_bracket_open);
                       	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_tds])));
                       	strcat(json, string_buffer);
                       	dtostrf(TDS, 4, 2, float_buffer);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-                      	strcat(json, json_bracket_open);
                       	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_sal])));
                       	strcat(json, string_buffer);
                       	dtostrf(SAL, 4, 2, float_buffer);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-                      	strcat(json, json_bracket_open);
                       	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_sg])));
                       	strcat(json, string_buffer);
                       	dtostrf(SG, 4, 2, float_buffer);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-                      	strcat(json, json_bracket_open);
                       	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_do_mgl])));
                       	strcat(json, string_buffer);
                       	itoa(DO_mgL, float_buffer, 10);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-                      	strcat(json, json_bracket_open);
                       	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_do_per])));
                       	strcat(json, string_buffer);
                       	itoa(DO_PER, float_buffer, 10);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-                      	strcat(json, json_bracket_open);
                       	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_orp])));
                       	strcat(json, string_buffer);
                       	itoa(ORP, float_buffer, 10);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-                      	strcat(json, json_bracket_open);
                       	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_resTemp])));
                       	strcat(json, string_buffer);
                       	dtostrf(resTemp, 4, 2, float_buffer);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-                      	strcat(json, json_bracket_open);
                       	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_upperFloat])));
                       	strcat(json, string_buffer);
                       	dtostrf(analogRead(UPPER_FLOAT), 4, 2, float_buffer);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
-					    strcat(json, json_comma);
 
-                      	strcat(json, json_bracket_open);
                       	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_lowerFloat])));
                       	strcat(json, string_buffer);
                       	dtostrf(analogRead(LOWER_FLOAT), 4, 2, float_buffer);
                       	strcat(json, float_buffer);
-					    strcat(json, json_bracket_close);
 
-					  strcat(json, json_array_bracket_close);
+					  strcat(json, json_bracket_close);
 
                       strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_channels])));
                       strcat(json, string_buffer);
