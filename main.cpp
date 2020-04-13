@@ -10,9 +10,10 @@
 #define DEBUG 1
 #define EEPROM_DEBUG 1
 #define BUFSIZE 255
+#define CHANNEL_SIZE 16
 
-#define ONE_WIRE_BUS 2
-#define DHT_ENV_PIN  3
+#define ONE_WIRE_BUS 38
+#define DHT_ENV_PIN  41
 #define UPPER_FLOAT A0
 #define LOWER_FLOAT A1
 
@@ -21,6 +22,8 @@ extern int  *__brkval;
 
 const char json_bracket_open[] = "{";
 const char json_bracket_close[] = "}";
+const char json_array_bracket_close[] = "]";
+const char json_comma[] = ",";
 
 const char string_initializing[] PROGMEM = "Initializing reservoir...";
 const char string_dhcp_failed[] PROGMEM = "DHCP Failed";
@@ -32,22 +35,23 @@ const char string_http_xpowered_by[] PROGMEM = "X-Powered-By: CropDroid";
 const char string_rest_address[] PROGMEM = "REST service listening on: ";
 const char string_switch_on[] PROGMEM = "Switching on";
 const char string_switch_off[] PROGMEM = "Switching off";
+const char string_json_key_metrics[] PROGMEM = "\"metrics\":[";
 const char string_json_key_mem[] PROGMEM = "\"mem\":";
-const char string_json_key_envTemp[] PROGMEM = ",\"envTemp\":";
-const char string_json_key_envHumidity[] PROGMEM = ",\"envHumidity\":";
-const char string_json_key_envHeatIndex[] PROGMEM = ",\"envHeatIndex\":";
-const char string_json_key_ph[] PROGMEM = ",\"PH\":";
-const char string_json_key_ec[] PROGMEM = ",\"EC\":";
-const char string_json_key_tds[] PROGMEM = ",\"TDS\":";
-const char string_json_key_sal[] PROGMEM = ",\"SAL\":";
-const char string_json_key_sg[] PROGMEM = ",\"SG\":";
-const char string_json_key_do_mgl[] PROGMEM = ",\"DO_mgL\":";
-const char string_json_key_do_per[] PROGMEM = ",\"DO_PER\":";
-const char string_json_key_orp[] PROGMEM = ",\"ORP\":";
-const char string_json_key_resTemp[] PROGMEM = ",\"resTemp\":";
-const char string_json_key_upperFloat[] PROGMEM = ",\"upperFloat\":";
-const char string_json_key_lowerFloat[] PROGMEM = ",\"lowerFloat\":";
-const char string_json_key_channels[] PROGMEM = ",\"channels\":{";
+const char string_json_key_envTemp[] PROGMEM = "\"envTemp\":";
+const char string_json_key_envHumidity[] PROGMEM = "\"envHumidity\":";
+const char string_json_key_envHeatIndex[] PROGMEM = "\"envHeatIndex\":";
+const char string_json_key_ph[] PROGMEM = "\"PH\":";
+const char string_json_key_ec[] PROGMEM = "\"EC\":";
+const char string_json_key_tds[] PROGMEM = "\"TDS\":";
+const char string_json_key_sal[] PROGMEM = "\"SAL\":";
+const char string_json_key_sg[] PROGMEM = "\"SG\":";
+const char string_json_key_do_mgl[] PROGMEM = "\"DO_mgL\":";
+const char string_json_key_do_per[] PROGMEM = "\"DO_PER\":";
+const char string_json_key_orp[] PROGMEM = "\"ORP\":";
+const char string_json_key_resTemp[] PROGMEM = "\"resTemp\":";
+const char string_json_key_upperFloat[] PROGMEM = "\"upperFloat\":";
+const char string_json_key_lowerFloat[] PROGMEM = "\"lowerFloat\":";
+const char string_json_key_channels[] PROGMEM = ",\"channels\":[";
 const char string_json_key_channel[] PROGMEM = "\"channel\":";
 const char string_json_key_pin[] PROGMEM = ",\"pin\":";
 const char string_json_key_position[] PROGMEM =  ",\"position\":";
@@ -55,11 +59,12 @@ const char string_json_key_value[] PROGMEM =  ",\"value\":";
 const char string_json_key_address[] PROGMEM =  "\"address\":";
 const char string_json_bracket_open[] PROGMEM = "{";
 const char string_json_bracket_close[] PROGMEM = "}";
-const char string_json_error_invalid_channel[] PROGMEM = "{\"error\":\"Invalid channel\"}";
-const char string_json_reboot_true PROGMEM = "{\"reboot\":true}";
-const char string_json_reset_true PROGMEM = "{\"reset\":true}";
+const char string_json_error_invalid_channel[] PROGMEM = "\"error\":\"Invalid channel\"";
+const char string_json_reboot_true PROGMEM = "\"reboot\":true";
+const char string_json_reset_true PROGMEM = "\"reset\":true";
 const char string_hardware_version[] PROGMEM = "\"hardware\":\"res-v0.6a\",";
-const char string_firmware_version[] PROGMEM = "\"firmware\":\"0.0.2a\"";
+const char string_firmware_version[] PROGMEM = "\"firmware\":\"0.0.3a\"";
+const char string_json_key_uptime[] PROGMEM = ",\"uptime\":";
 const char * const string_table[] PROGMEM = {
   string_initializing,
   string_dhcp_failed,
@@ -71,6 +76,7 @@ const char * const string_table[] PROGMEM = {
   string_rest_address,
   string_switch_on,
   string_switch_off,
+  string_json_key_metrics,
   string_json_key_mem,
   string_json_key_envTemp,
   string_json_key_envHumidity,
@@ -98,7 +104,8 @@ const char * const string_table[] PROGMEM = {
   string_json_reboot_true,
   string_json_reset_true,
   string_hardware_version,
-  string_firmware_version
+  string_firmware_version,
+  string_json_key_uptime
 };
 int idx_initializing = 0,
     idx_dhcp_failed = 1,
@@ -110,44 +117,45 @@ int idx_initializing = 0,
 	idx_rest_address = 7,
 	idx_switch_on = 8,
 	idx_switch_off = 9,
-	idx_json_key_mem = 10,
-	idx_json_key_envTemp = 11,
-	idx_json_key_envHumidity = 12,
-	idx_json_key_envHeatIndex = 13,
-	idx_json_key_ph = 14,
-	idx_json_key_ec = 15,
-	idx_json_key_tds = 16,
-	idx_json_key_sal = 17,
-	idx_json_key_sg = 18,
-	idx_json_key_do_mgl = 19,
-	idx_json_key_do_per = 20,
-	idx_json_key_orp = 21,
-	idx_json_key_resTemp = 22,
-	idx_json_key_upperFloat = 23,
-	idx_json_key_lowerFloat = 24,
-	idx_json_key_channels = 25,
-	idx_json_key_channel = 26,
-	idx_json_key_pin = 27,
-	idx_json_key_position = 28,
-	idx_json_key_value = 29,
-	idx_json_key_address = 30,
-	idx_json_key_bracket_open = 31,
-	idx_json_key_bracket_close = 32,
-	idx_json_error_invalid_channel = 33,
-	idx_json_reboot_true = 34,
-	idx_json_reset_true = 35,
-	idx_hardware_version = 36,
-	idx_firmware_version = 37;
+	idx_json_key_metrics = 10,
+	idx_json_key_mem = 11,
+	idx_json_key_envTemp = 12,
+	idx_json_key_envHumidity = 13,
+	idx_json_key_envHeatIndex = 14,
+	idx_json_key_ph = 15,
+	idx_json_key_ec = 16,
+	idx_json_key_tds = 17,
+	idx_json_key_sal = 18,
+	idx_json_key_sg = 19,
+	idx_json_key_do_mgl = 20,
+	idx_json_key_do_per = 21,
+	idx_json_key_orp = 22,
+	idx_json_key_resTemp = 23,
+	idx_json_key_upperFloat = 24,
+	idx_json_key_lowerFloat = 25,
+	idx_json_key_channels = 26,
+	idx_json_key_channel = 27,
+	idx_json_key_pin = 28,
+	idx_json_key_position = 29,
+	idx_json_key_value = 30,
+	idx_json_key_address = 31,
+	idx_json_key_bracket_open = 32,
+	idx_json_key_bracket_close = 33,
+	idx_json_error_invalid_channel = 34,
+	idx_json_reboot_true = 35,
+	idx_json_reset_true = 36,
+	idx_hardware_version = 37,
+	idx_firmware_version = 38,
+	idx_json_key_uptime = 39;
 char string_buffer[60];
 char float_buffer[10];
 
 const int NULL_CHANNEL = 255;
-const int channel_size = 16;
-const uint8_t channels[channel_size] = {
+const uint8_t channels[CHANNEL_SIZE] = {
 	22, 23, 24, 25, 26, 27, 28, 29,
 	30, 31, 32, 33, 34, 35, 36, 37
 };
-unsigned long channel_table[channel_size][3] = {
+unsigned long channel_table[CHANNEL_SIZE][3] = {
 	// channel, start, interval
    {NULL_CHANNEL, 0, 0},
    {NULL_CHANNEL, 0, 0},
@@ -229,7 +237,7 @@ void setup(void) {
 
   analogReference(DEFAULT);
 
-  for(int i=0; i<channel_size; i++) {
+  for(int i=0; i<CHANNEL_SIZE; i++) {
     pinMode(channels[i], OUTPUT);
     digitalWrite(channels[i], LOW);
   }
@@ -470,7 +478,7 @@ void debug(String msg) {
 void handleActiveChannels() {
 	unsigned long currentMillis = millis();
 
-	for(int i=0; i<channel_size; i++) {
+	for(int i=0; i<CHANNEL_SIZE; i++) {
 		if(channel_table[i][0] != NULL_CHANNEL) {
 			if(currentMillis - channel_table[i][1] > channel_table[i][2]) {
 
@@ -502,7 +510,7 @@ void handleWebRequest() {
 	int index = 0;
 
 	bool reboot = false;
-	char json[275];
+	char json[500];
 	char sPin[3];
 	char state[3];
 
@@ -543,102 +551,145 @@ void handleWebRequest() {
 				  Serial.println(param2);
 				#endif
 
-				// /status
-				if (strncmp(resource, "status", 6) == 0) {
+				// /state
+				if (strncmp(resource, "state", 5) == 0) {
 
 					strcpy(json, json_bracket_open);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_mem])));
+					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_metrics])));
 					  strcat(json, string_buffer);
-					  itoa(availableMemory(), float_buffer, 10);
-					  strcat(json, float_buffer);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_envTemp])));
-					  strcat(json, string_buffer);
-					  dtostrf(envTemp, 4, 2, float_buffer);
-					  strcat(json, float_buffer);
+					    strcat(json, json_bracket_open);
+					    strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_mem])));
+					    strcat(json, string_buffer);
+					    itoa(availableMemory(), float_buffer, 10);
+					    strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_envHumidity])));
-					  strcat(json, string_buffer);
-                      dtostrf(envHumidity, 4, 2, float_buffer);
-                      strcat(json, float_buffer);
+					    strcat(json, json_bracket_open);
+					    strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_envTemp])));
+					    strcat(json, string_buffer);
+					    dtostrf(envTemp, 4, 2, float_buffer);
+					    strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-                      strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_envHeatIndex])));
-					  strcat(json, string_buffer);
-                      dtostrf(envHeatIndex, 4, 2, float_buffer);
-					  strcat(json, float_buffer);
+					    strcat(json, json_bracket_open);
+					    strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_envHumidity])));
+					    strcat(json, string_buffer);
+					    dtostrf(envHumidity, 4, 2, float_buffer);
+					    strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_ph])));
-					  strcat(json, string_buffer);
-					  dtostrf(PH, 4, 2, float_buffer);
-					  strcat(json, float_buffer);
+					    strcat(json, json_bracket_open);
+					    strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_envHeatIndex])));
+					    strcat(json, string_buffer);
+                      	dtostrf(envHeatIndex, 4, 2, float_buffer);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_ec])));
-					  strcat(json, string_buffer);
-					  dtostrf(EC, 4, 2, float_buffer);
-					  strcat(json, float_buffer);
+                      	strcat(json, json_bracket_open);
+                      	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_ph])));
+                      	strcat(json, string_buffer);
+                      	dtostrf(PH, 4, 2, float_buffer);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_tds])));
-					  strcat(json, string_buffer);
-					  dtostrf(TDS, 4, 2, float_buffer);
-					  strcat(json, float_buffer);
+                      	strcat(json, json_bracket_open);
+                      	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_ec])));
+                      	strcat(json, string_buffer);
+                      	dtostrf(EC, 4, 2, float_buffer);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_sal])));
-					  strcat(json, string_buffer);
-					  dtostrf(SAL, 4, 2, float_buffer);
-					  strcat(json, float_buffer);
+                      	strcat(json, json_bracket_open);
+                      	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_tds])));
+                      	strcat(json, string_buffer);
+                      	dtostrf(TDS, 4, 2, float_buffer);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_sg])));
-					  strcat(json, string_buffer);
-					  dtostrf(SG, 4, 2, float_buffer);
-					  strcat(json, float_buffer);
+                      	strcat(json, json_bracket_open);
+                      	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_sal])));
+                      	strcat(json, string_buffer);
+                      	dtostrf(SAL, 4, 2, float_buffer);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_do_mgl])));
-					  strcat(json, string_buffer);
-					  itoa(DO_mgL, float_buffer, 10);
-					  strcat(json, float_buffer);
+                      	strcat(json, json_bracket_open);
+                      	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_sg])));
+                      	strcat(json, string_buffer);
+                      	dtostrf(SG, 4, 2, float_buffer);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_do_per])));
-					  strcat(json, string_buffer);
-					  itoa(DO_PER, float_buffer, 10);
-					  strcat(json, float_buffer);
+                      	strcat(json, json_bracket_open);
+                      	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_do_mgl])));
+                      	strcat(json, string_buffer);
+                      	itoa(DO_mgL, float_buffer, 10);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_orp])));
-					  strcat(json, string_buffer);
-					  itoa(ORP, float_buffer, 10);
-					  strcat(json, float_buffer);
+                      	strcat(json, json_bracket_open);
+                      	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_do_per])));
+                      	strcat(json, string_buffer);
+                      	itoa(DO_PER, float_buffer, 10);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_resTemp])));
-					  strcat(json, string_buffer);
-					  dtostrf(resTemp, 4, 2, float_buffer);
-					  strcat(json, float_buffer);
+                      	strcat(json, json_bracket_open);
+                      	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_orp])));
+                      	strcat(json, string_buffer);
+                      	itoa(ORP, float_buffer, 10);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_upperFloat])));
-					  strcat(json, string_buffer);
-					  dtostrf(analogRead(UPPER_FLOAT), 4, 2, float_buffer);
-					  strcat(json, float_buffer);
+                      	strcat(json, json_bracket_open);
+                      	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_resTemp])));
+                      	strcat(json, string_buffer);
+                      	dtostrf(resTemp, 4, 2, float_buffer);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_lowerFloat])));
-					  strcat(json, string_buffer);
-					  dtostrf(analogRead(LOWER_FLOAT), 4, 2, float_buffer);
-					  strcat(json, float_buffer);
+                      	strcat(json, json_bracket_open);
+                      	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_upperFloat])));
+                      	strcat(json, string_buffer);
+                      	dtostrf(analogRead(UPPER_FLOAT), 4, 2, float_buffer);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+					    strcat(json, json_comma);
 
-					  strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_channels])));
-					  strcat(json, string_buffer);
-						for(int i=0; i<channel_size; i++) {
+                      	strcat(json, json_bracket_open);
+                      	strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_lowerFloat])));
+                      	strcat(json, string_buffer);
+                      	dtostrf(analogRead(LOWER_FLOAT), 4, 2, float_buffer);
+                      	strcat(json, float_buffer);
+					    strcat(json, json_bracket_close);
+
+					  strcat(json, json_array_bracket_close);
+
+                      strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_channels])));
+                      strcat(json, string_buffer);
+						for(int i=0; i<CHANNEL_SIZE; i++) {
 						  itoa(digitalRead(channels[i]), state, 10);
-
-						  strcat(json, "\"");
-						  itoa(i, float_buffer, 10);
-						  strcat(json, float_buffer);
-						  strcat(json, "\":");
-
 						  strcat(json, state);
-						  if(i + 1 < channel_size) {
-							  strcat(json, ",");
+						  if(i + 1 < CHANNEL_SIZE) {
+						    strcat(json, ",");
 						  }
 						}
-					  strcat(json, "}");
+					  strcat(json, json_array_bracket_close);
 
 					strcat(json, json_bracket_close);
 				}
@@ -666,8 +717,8 @@ void handleWebRequest() {
 					strcat(json, json_bracket_close);
 				}
 
-				// /dispense/{channel}/{seconds}
-				else if (strncmp(resource, "dispense", 8) == 0) {
+				// /timer/{channel}/{seconds}
+				else if (strncmp(resource, "timer", 5) == 0) {
 
 					if(param1 == NULL || param1 == "") {
 						Serial.println("parameter required");
@@ -678,7 +729,7 @@ void handleWebRequest() {
 					int channel = atoi(param1);
 					unsigned long duration = strtoul(param2, NULL, 10);
 
-					if(channel >= 0 && channel < (channel_size -1) && duration > 0) {
+					if(channel >= 0 && channel < (CHANNEL_SIZE -1) && duration > 0) {
 
 						#if DEBUG
 						  Serial.print("Channel: ");
@@ -714,13 +765,13 @@ void handleWebRequest() {
 				}
 
 				// /switch/{channel}/{position}     1 = on, else off
-				else if (strncmp(resource, "switch", 7) == 0) {
+				else if (strncmp(resource, "switch", 6) == 0) {
 
 					bool valid = false;
 					int channel = atoi(param1);
 					int position = atoi(param2);
 
-					if(channel >= 0 && channel < (channel_size-1)) {
+					if(channel >= 0 && channel <= (CHANNEL_SIZE-1)) {
 						valid = true;
 					}
 
@@ -750,10 +801,13 @@ void handleWebRequest() {
 							Serial.print("/switch: ");
 							Serial.println(json);
 						#endif
+
 					}
 					else {
-						strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_error_invalid_channel])));
-						strcat(json, string_buffer);
+						strcpy(json, json_bracket_open);
+							strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_error_invalid_channel])));
+							strcat(json, string_buffer);
+						strcat(json, json_bracket_close);
 					}
 				}
 
@@ -762,8 +816,12 @@ void handleWebRequest() {
 					#if DEBUG
 						Serial.println("/reboot");
 					#endif
-					strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_reboot_true])));
-					strcat(json, string_buffer);
+
+					strcpy(json, json_bracket_open);
+						strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_reboot_true])));
+						strcat(json, string_buffer);
+					strcat(json, json_bracket_close);
+
 					reboot = true;
 				}
 
@@ -775,8 +833,12 @@ void handleWebRequest() {
 
 					resetDefaults();
 
-					strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_reset_true])));
-					strcat(json, string_buffer);
+					strcpy(json, json_bracket_open);
+						strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_reset_true])));
+						strcat(json, string_buffer);
+					strcat(json, json_bracket_close);
+
+					reboot = true;
 				}
 
 				// /sys
@@ -788,6 +850,11 @@ void handleWebRequest() {
 						strcat(json, string_buffer);
 
 						strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_firmware_version])));
+						strcat(json, string_buffer);
+
+						strcpy_P(string_buffer, (char*)pgm_read_word(&(string_table[idx_json_key_uptime])));
+						strcat(json, string_buffer);
+						itoa(millis(), string_buffer, 10);
 						strcat(json, string_buffer);
 
 					strcat(json, json_bracket_close);
