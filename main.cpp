@@ -14,8 +14,11 @@
 
 #define ONE_WIRE_BUS 38
 #define DHT_ENV_PIN  41
-#define UPPER_FLOAT A0
-#define LOWER_FLOAT A1
+//#define UPPER_FLOAT A0
+//#define LOWER_FLOAT A1
+
+#define UPPER_FLOAT A14
+#define LOWER_FLOAT A15
 
 extern int  __bss_end;
 extern int  *__brkval;
@@ -62,8 +65,8 @@ const char string_json_bracket_close[] PROGMEM = "}";
 const char string_json_error_invalid_channel[] PROGMEM = "\"error\":\"Invalid channel\"";
 const char string_json_reboot_true PROGMEM = "\"reboot\":true";
 const char string_json_reset_true PROGMEM = "\"reset\":true";
-const char string_hardware_version[] PROGMEM = "\"hardware\":\"res-v0.6a\",";
-const char string_firmware_version[] PROGMEM = "\"firmware\":\"0.0.3a\"";
+const char string_hardware_version[] PROGMEM = "\"hardware\":\"res-v0.7a\",";
+const char string_firmware_version[] PROGMEM = "\"firmware\":\"0.0.4a\"";
 const char string_json_key_uptime[] PROGMEM = ",\"uptime\":";
 const char * const string_table[] PROGMEM = {
   string_initializing,
@@ -241,10 +244,10 @@ void setup(void) {
     pinMode(channels[i], OUTPUT);
     digitalWrite(channels[i], LOW);
   }
-  //pinMode(UPPER_FLOAT, INPUT_PULLUP);
-  //pinMode(LOWER_FLOAT, INPUT_PULLUP);
-  pinMode(UPPER_FLOAT, INPUT);
-  pinMode(LOWER_FLOAT, INPUT);
+  pinMode(UPPER_FLOAT, INPUT_PULLUP);
+  pinMode(LOWER_FLOAT, INPUT_PULLUP);
+  //pinMode(UPPER_FLOAT, INPUT);
+  //pinMode(LOWER_FLOAT, INPUT);
 
   #if DEBUG || EEPROM_DEBUG
     Serial.begin(115200);
@@ -506,7 +509,7 @@ void handleWebRequest() {
 
 	httpClient = httpServer.available();
 
-	char clientline[BUFSIZE];
+	char clientline[BUFSIZE] = {0};
 	int index = 0;
 
 	bool reboot = false;
@@ -685,7 +688,7 @@ void handleWebRequest() {
 					int channel = atoi(param1);
 					unsigned long duration = strtoul(param2, NULL, 10);
 
-					if(channel >= 0 && channel < (CHANNEL_SIZE -1) && duration > 0) {
+					if(channel >= 0 && channel < CHANNEL_SIZE && duration > 0) {
 
 						#if DEBUG
 						  Serial.print("Channel: ");
@@ -727,7 +730,7 @@ void handleWebRequest() {
 					int channel = atoi(param1);
 					int position = atoi(param2);
 
-					if(channel >= 0 && channel <= (CHANNEL_SIZE-1)) {
+					if(channel >= 0 && channel < CHANNEL_SIZE) {
 						valid = true;
 					}
 
@@ -798,7 +801,7 @@ void handleWebRequest() {
 				}
 
 				// /sys
-				else if (strncmp(resource, "sys", 6) == 0) {
+				else if (strncmp(resource, "system", 6) == 0) {
 
 					strcpy(json, json_bracket_open);
 
