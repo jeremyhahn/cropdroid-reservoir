@@ -1,6 +1,3 @@
-ORG := jeremyhahn
-PACKAGE := cropdroid.room
-TARGET_OS := linux
 
 .PHONY: clean flash-usbasp flash-serial monitor
 
