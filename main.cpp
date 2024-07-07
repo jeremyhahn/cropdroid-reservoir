@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// SPDX-License-Identifier: commercial
+
 #include <Arduino.h>
 #include <SPI.h>
 #include "Ethernet.h"
